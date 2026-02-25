@@ -122,9 +122,16 @@ def get_jobs_by_h3(h3_index: str):
     return [dict(job) for job in jobs]
 
 @app.get("/audit")
-def get_audit_log():
+def get_audit_log(requester_id: int):
     conn = get_db()
     cursor = conn.cursor()
+
+    cursor.execute("SELECT role FROM users WHERE id = ?", (requester_id,))
+    user = cursor.fetchone()
+
+    if not user or user["role"] != "admin":
+        conn.close()
+        return {"error": "Only admin can view audit log"}
 
     cursor.execute("SELECT * FROM audit_log")
     logs = cursor.fetchall()
