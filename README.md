@@ -29,7 +29,7 @@ The application allows employers to manage employees, calculate payroll, and gen
 2. Open index.html in your browser  
 
 ## Live Demo
-Add your deployed link here (e.g. https://your-project.vercel.app)
+Add your deployed link here https://payroll-management-system-steel.vercel.app/
 
 ## Demo Video
 Add your Google Drive link here
